@@ -8,7 +8,7 @@ Header Modifier is a Burp extension to allow the users to modify, add or remove 
 * Click “Next”.
 * Use the “Errors” tab to verify no errors were generated.
 
-###Usage
+### Usage
 <ul>Add Header
     <ul>
       <li>Header Name: Authorization</li>
