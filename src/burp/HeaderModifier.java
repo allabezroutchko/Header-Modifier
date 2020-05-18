@@ -3,9 +3,11 @@ package burp;
 import java.util.ArrayList;
 import burp.*;
 
+import javax.print.DocFlavor;
+
 public class HeaderModifier implements IBurpExtender, IHttpListener
 {
-    private String version = "v1.0";
+    private String version = "v1.1";
     IExtensionHelpers helpers = null;
     private IBurpExtenderCallbacks callback= null;
     final String extensionName = "Header Modifier";
@@ -22,7 +24,7 @@ public class HeaderModifier implements IBurpExtender, IHttpListener
 
     @Override
     public void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResponse messageInfo) {
-        if ((messageIsRequest)&&(gui.isEnabled())&&((toolFlag==callback.TOOL_EXTENDER)||(toolFlag==callback.TOOL_SCANNER))){
+        if ((messageIsRequest)&&(gui.isEnabled())&&(this.getSelection(toolFlag))){
             String requestBody = null;
             String requestString = new String(messageInfo.getRequest());
             IRequestInfo request = helpers.analyzeRequest(messageInfo);
@@ -41,6 +43,18 @@ public class HeaderModifier implements IBurpExtender, IHttpListener
         }
     }
 
+    private boolean getSelection(int toolFlag){
+        boolean flag = false;
+        switch (toolFlag){
+            case 0x00000010 :
+                flag = this.gui.toolSelection.get("Scanner");
+                break;
+            case 0x00000400 :
+                flag = this.gui.toolSelection.get("Extender");
+                break;
+        }
+        return flag;
+    }
 
     private ArrayList<String> removeHeader(ArrayList<String> header,String headerName){
         for (int i =0;i<header.size();i++){
