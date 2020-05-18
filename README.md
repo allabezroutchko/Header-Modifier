@@ -28,6 +28,7 @@ Header Modifier is a Burp extension to allow the users to modify, add or remove 
       <li>Modified header added to the request &rArr; Authorization: Bearer 12345678</li>
     </ul> 
 </ul>
+
 ### Changelog
 <ul> v1.1
     <ul>
