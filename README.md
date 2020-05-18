@@ -33,7 +33,7 @@ Header Modifier is a Burp extension to allow the users to modify, add or remove 
 <ul> v1.1
     <ul>
       <li>Java SDK version: 13.0.2</li>
-      <li>Added option Burp tool selection</li>
+      <li>Added option for Burp tool selection</li>
       <li>Minor UI changes</li>
     </ul> 
 </ul> 
