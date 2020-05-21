@@ -48,7 +48,7 @@ public class HeadModifier_GUI extends JPanel implements ITab {
         this.headerName_Text = new JTextArea(1,30);
         this.headerValue_Text= new JTextArea(8,30);
         this.headerValue_Text.setLineWrap(true);
-        headerName_Text.setLineWrap(true);
+        this.headerName_Text.setLineWrap(true);
     }
 
     private void initLabels(){
@@ -170,17 +170,21 @@ public class HeadModifier_GUI extends JPanel implements ITab {
 
     public JPanel addvaluePanel() {
         this.valuePanel = new JPanel();
+        JScrollPane scroll = new JScrollPane(this.headerValue_Text);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         valuePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         valuePanel.add(headerValue_Label);
-        valuePanel.add(headerValue_Text);
+        valuePanel.add(scroll);
         return valuePanel;
     }
 
     public JPanel addNamePanel(){
         this.namePanel = new JPanel();
+        JScrollPane scroll = new JScrollPane(this.headerName_Text);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         namePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         namePanel.add(headerName_Label);
-        namePanel.add(headerName_Text);
+        namePanel.add(scroll);
         return namePanel;
     }
 

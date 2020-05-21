@@ -30,6 +30,11 @@ Header Modifier is a Burp extension to allow the users to modify, add or remove 
 </ul>
 
 ### Changelog
+<ul> v1.2
+    <ul>
+      <li>Added JScrollPane for header name and value</li>
+    </ul> 
+</ul> 
 <ul> v1.1
     <ul>
       <li>Java SDK version: 13.0.2</li>

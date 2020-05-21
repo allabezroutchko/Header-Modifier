@@ -7,7 +7,7 @@ import javax.print.DocFlavor;
 
 public class HeaderModifier implements IBurpExtender, IHttpListener
 {
-    private String version = "v1.1";
+    private String version = "v1.2";
     IExtensionHelpers helpers = null;
     private IBurpExtenderCallbacks callback= null;
     final String extensionName = "Header Modifier";
