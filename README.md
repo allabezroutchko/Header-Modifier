@@ -30,6 +30,11 @@ Header Modifier is a Burp extension to allow the users to modify, add or remove 
 </ul>
 
 ### Changelog
+<ul> v1.3
+    <ul>
+      <li>Added presence check before modifying a header</li>
+    </ul> 
+</ul> 
 <ul> v1.2
     <ul>
       <li>Added JScrollPane for header name and value</li>

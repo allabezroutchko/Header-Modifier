@@ -7,7 +7,7 @@ import javax.print.DocFlavor;
 
 public class HeaderModifier implements IBurpExtender, IHttpListener
 {
-    private String version = "v1.2";
+    private String version = "v1.3";
     IExtensionHelpers helpers = null;
     private IBurpExtenderCallbacks callback= null;
     final String extensionName = "Header Modifier";
@@ -34,7 +34,7 @@ public class HeaderModifier implements IBurpExtender, IHttpListener
                 header = addHeader(header,gui.headerName_Text.getText(), gui.headerValue_Text.getText());
             }else if (gui.removeHeader.isSelected()){
                 header = removeHeader(header,gui.headerName_Text.getText());
-            }else if(gui.modifyHeader.isSelected()){
+            }else if(gui.modifyHeader.isSelected()&&(headerPresent(header,gui.headerName_Text.getText()))){
                 header = removeHeader(header,gui.headerName_Text.getText());
                 header = addHeader(header,gui.headerName_Text.getText(), gui.headerValue_Text.getText());
             }
@@ -54,6 +54,16 @@ public class HeaderModifier implements IBurpExtender, IHttpListener
                 break;
         }
         return flag;
+    }
+
+    private boolean headerPresent(ArrayList<String> header,String headerName){
+        boolean present =false;
+        for (int i =0;i<header.size();i++){
+            if (header.get(i).startsWith(headerName)){
+                present = true;
+            }
+        }
+        return present;
     }
 
     private ArrayList<String> removeHeader(ArrayList<String> header,String headerName){
