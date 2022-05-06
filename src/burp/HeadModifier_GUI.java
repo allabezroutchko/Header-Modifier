@@ -15,7 +15,7 @@ import java.util.concurrent.Flow;
 public class HeadModifier_GUI extends JPanel implements ITab {
     private String extensionName = null;
     IBurpExtenderCallbacks callback = null;
-    private JCheckBox isEnabled , burpScanner,burpExtender;
+    private JCheckBox isEnabled , burpScanner,burpExtender,burpRepeater,burpTarget;
     public JTextArea headerName_Text, headerValue_Text;
     private JLabel headerName_Label,headerValue_Label;
     public JRadioButton addHeader, modifyHeader, removeHeader;
@@ -98,6 +98,37 @@ public class HeadModifier_GUI extends JPanel implements ITab {
                 }
             }
         });
+
+        this.burpRepeater = new JCheckBox();
+        this.burpRepeater.setSelected(false);
+        this.burpRepeater.setText("Repeater");
+        this.toolSelection.put("Repeater",false);
+        this.burpRepeater.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange()==ItemEvent.SELECTED){
+                    toolSelection.replace("Repeater",true);
+                }else if (e.getStateChange()==ItemEvent.DESELECTED){
+                    toolSelection.replace("Repeater",false);
+                }
+            }
+        });
+
+        this.burpTarget = new JCheckBox();
+        this.burpTarget.setSelected(false);
+        this.burpTarget.setText("Target");
+        this.toolSelection.put("Target",false);
+        this.burpTarget.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange()==ItemEvent.SELECTED){
+                    toolSelection.replace("Target",true);
+                }else if (e.getStateChange()==ItemEvent.DESELECTED){
+                    toolSelection.replace("Target",false);
+                }
+            }
+        });
+
     }
 
     private void initRadioButtons(){
@@ -165,6 +196,8 @@ public class HeadModifier_GUI extends JPanel implements ITab {
         this.toolPanel.add(new JLabel("Burp Tools: "));
         this.toolPanel.add(this.burpExtender);
         this.toolPanel.add(this.burpScanner);
+	this.toolPanel.add(this.burpRepeater);
+	this.toolPanel.add(this.burpTarget);
         return this.toolPanel;
     }
 
